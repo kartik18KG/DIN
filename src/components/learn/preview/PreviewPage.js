@@ -115,8 +115,8 @@ const PreviewPage = (props) => {
                     eventKey="0"
                   >
                     <img
-                      src="https://www.svgrepo.com/show/60060/down-arrow.svg"
-                      className="article-dwn fa-angle-down"
+                      src="https://www.svgrepo.com/show/156660/down-arrow.svg"
+                      className="article-dwn topics-overview-toggle fa-angle-down"
                       style={{ width: "20px" }}
                       alt={"show articles realted to" + descriptionString}
                     />

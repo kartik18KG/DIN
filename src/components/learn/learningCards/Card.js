@@ -58,9 +58,9 @@ const Card = (props) => {
                         </Row>
                       ) : null}
                       {uid ? (
-                        <a href={"/learn/" + item.Name}>
+                        <NavLink to={"/learn/" + item.Name}>
                           <SomeButton buttonText={"Start Now"} />
-                        </a>
+                        </NavLink>
                       ) : (
                         <NavLink to={"/learn/" + item.Name}>
                           <SomeButton buttonText={"Login to Start"} />

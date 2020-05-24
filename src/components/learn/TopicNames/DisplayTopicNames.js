@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Accordion, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
@@ -14,10 +14,27 @@ import "./css/Article-names.css";
 import $ from "jquery";
 import Plus from "./DisplayTopicNamesComp/add";
 import Article from "./DisplayTopicNamesComp/article";
+import { HomeContext } from "../../../contexts/homeContext";
 
 const DisplayTopicNames = (props) => {
   const { isAdmin, authData } = useContext(AuthContext);
-
+  const { home } = useContext(HomeContext);
+  // For dark mode
+  // made a function that updates the state to re render the component
+  useEffect(() => {
+    if ($("body").hasClass("dark")) {
+      $(".article-toggle").attr(
+        "src",
+        "https://www.svgrepo.com/show/156660/down-arrow.svg"
+      );
+    } else {
+      $(".article-toggle").attr(
+        "src",
+        "https://www.svgrepo.com/show/60060/down-arrow.svg"
+      );
+    }
+  }, [home]);
+  //
   const [firstRender, setFirstRender] = useState(true);
   const [unhideToggleId, setUnhideToggleId] = useState({});
 
@@ -36,14 +53,15 @@ const DisplayTopicNames = (props) => {
     }
   };
 
-  console.log(authData);
-
   const UnhideToggle = (id) => {
     setUnhideToggleId({
       ...unhideToggleId,
       [id]: true,
     });
   };
+
+  var Arrow;
+  // const Mode = localStorage.getItem("mode");
 
   if (firstRender) {
     authData.userProfile &&
@@ -65,6 +83,10 @@ const DisplayTopicNames = (props) => {
       $("html, body").animate({ ScrollTop: 585 }, 100);
     }
   };
+
+  // const [Arrow, setArrow] = useState(
+  //   "https://www.svgrepo.com/show/60060/down-arrow.svg"
+  // );
 
   return (
     <div>
@@ -94,7 +116,6 @@ const DisplayTopicNames = (props) => {
                       }}
                     >
                       <img
-                        src="https://www.svgrepo.com/show/60060/down-arrow.svg"
                         className="article-dwn article-toggle fa-angle-down"
                         id={item.Name.split(/\s/).join("")}
                         style={{ width: "20px" }}

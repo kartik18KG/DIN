@@ -1,10 +1,28 @@
 /* eslint-disable */
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import DeleteArticle from "../../../layout/Button/DeleteButton";
 import $ from "jquery";
+import { HomeContext } from "../../../../contexts/homeContext";
 
 const Article = ({ readArticle, article, item, isAdmin }) => {
+  const { home } = useContext(HomeContext);
+  // For dark mode
+  // made a function that updates the state to re render the component
+  useEffect(() => {
+    if ($("body").hasClass("dark")) {
+      $(".read-book-svg").attr(
+        "src",
+        "https://www.svgrepo.com/show/1110/reader.svg"
+      );
+    } else {
+      $(".read-book-svg").attr(
+        "src",
+        "https://www.svgrepo.com/show/21266/open-book.svg"
+      );
+    }
+  }, [home]);
+
   return (
     <div className="row">
       <div className=" read col-10">
@@ -36,7 +54,6 @@ const Article = ({ readArticle, article, item, isAdmin }) => {
               <img
                 className="read-book-svg"
                 style={{ width: "20px" }}
-                src="https://www.svgrepo.com/show/21266/open-book.svg"
                 alt={"read " + article.ArticleName}
               />
             </span>

@@ -118,11 +118,15 @@
     top: -7px;
 }
 
+body.dark .topicName {
+    color: #f1f1f1 !important;
+}
+
 @media (max-width: 620px) {
     .read-book-svg {
         position: absolute;
         right: 50px;
-        bottom: 12px;
+        bottom: 2px;
     }
     .article-toggle {
         position: relative;

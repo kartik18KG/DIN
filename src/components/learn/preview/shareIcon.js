@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { OverlayTrigger, Popover, Button, Tooltip } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./css/shre.css";
+import { HomeContext } from "../../../contexts/homeContext";
+import $ from "jquery";
 
 const ShareIcon = ({ specaility, profile }) => {
   const width = window.innerWidth;
@@ -14,6 +16,23 @@ const ShareIcon = ({ specaility, profile }) => {
     position = "left";
   }
   const [copied, setCopied] = useState(false);
+
+  const { home } = useContext(HomeContext);
+  // For dark mode
+  // made a function that updates the state to re render the component
+  useEffect(() => {
+    if ($("body").hasClass("dark")) {
+      $(".share-speciality-btn").attr(
+        "src",
+        "https://www.svgrepo.com/show/242504/share.svg"
+      );
+    } else {
+      $(".share-speciality-btn").attr(
+        "src",
+        "https://www.svgrepo.com/show/149246/share.svg"
+      );
+    }
+  }, [home]);
 
   return (
     <div className="share-overlay">
@@ -31,11 +50,11 @@ const ShareIcon = ({ specaility, profile }) => {
                       profile && profile.referCode
                     }' to SignUp ",Check it out : ${url}`}
                     target="_blank"
-                    rel="noopener noreferrer nofollow">
-
+                    rel="noopener noreferrer nofollow"
+                  >
                     <img
                       src="https://www.svgrepo.com/show/303147/whatsapp-icon-logo.svg"
-                      alt={"share "+specaility + " on whatsapp"}
+                      alt={"share " + specaility + " on whatsapp"}
                     />
                   </a>
                 </div>
@@ -53,17 +72,17 @@ const ShareIcon = ({ specaility, profile }) => {
                           Copy link to clipboard
                         </Tooltip>
                       )
-                    }>
-
-                    <div id="link" >
+                    }
+                  >
+                    <div id="link">
                       <CopyToClipboard
                         text={url}
-                        onCopy={() => setCopied({ copied: true })}>
-
+                        onCopy={() => setCopied({ copied: true })}
+                      >
                         <img
                           src="https://www.svgrepo.com/show/200099/link.svg"
-                          alt={"copy "+specaility + " url" }/>
-
+                          alt={"copy " + specaility + " url"}
+                        />
                       </CopyToClipboard>
                     </div>
                   </OverlayTrigger>
@@ -76,12 +95,12 @@ const ShareIcon = ({ specaility, profile }) => {
                       profile && profile.referCode
                     }' to SignUp , check it out  ${url}`}
                     target="_top"
-                    rel="nofollow" >
-
+                    rel="nofollow"
+                  >
                     <img
                       src="https://www.svgrepo.com/show/303161/gmail-icon-logo.svg"
-                      alt={"share "+specaility + " on gmail" } />
-
+                      alt={"share " + specaility + " on gmail"}
+                    />
                   </a>
                 </div>
                 <div className="icon">
@@ -90,10 +109,12 @@ const ShareIcon = ({ specaility, profile }) => {
                     className="twitter-share-button"
                     data-text="Hey look I just found out this amazing Website to learn WebDevelopment, check it out"
                     data-show-count="false"
-                    rel="nofollow">
+                    rel="nofollow"
+                  >
                     <img
                       src="https://www.svgrepo.com/show/20626/twitter.svg"
-                      alt={"share "+specaility + " on twitter" }/>
+                      alt={"share " + specaility + " on twitter"}
+                    />
                   </a>
                   <script
                     async
@@ -104,11 +125,13 @@ const ShareIcon = ({ specaility, profile }) => {
               </div>
             </Popover.Content>
           </Popover>
-        }>
-        
+        }
+      >
         <Button variant="link">
-          <img src="https://www.svgrepo.com/show/149246/share.svg" 
-                alt={"share Articles on" + specaility} />
+          <img
+            className="share-speciality-btn"
+            alt={"share Articles on" + specaility}
+          />
         </Button>
       </OverlayTrigger>
     </div>

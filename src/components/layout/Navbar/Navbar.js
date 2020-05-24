@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Button, Col, Row } from "react-bootstrap";
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -13,11 +13,15 @@ import "../css/lightMode/navbar.css";
 // jQuery-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 import $ from "jquery";
 import { AuthContext } from "../../../contexts/authContext";
+import { HomeContext } from "../../../contexts/homeContext";
 import { getProfile } from "../../../crudFunctions/authFunctions";
+import { updateMode } from "../../../crudFunctions/homeFunctions";
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 const Navbar = (props) => {
   const { authData, authState, dispatch } = useContext(AuthContext);
+  const dispatch2 = useContext(HomeContext).dispatch;
+
   useEffect(() => {
     getProfile(dispatch);
   }, [authState]);
@@ -25,14 +29,27 @@ const Navbar = (props) => {
   useEffect(() => {
     // night mode toggle =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     $(".switch").on("click", () => {
-
+      updateMode(localStorage.getItem("mode"), dispatch2);
       if ($("body").hasClass("dark")) {
         $("body").removeClass("dark");
+        localStorage.setItem("mode", "light");
+        $(".mode-icon").attr(
+          "src",
+          "https://www.svgrepo.com/show/83726/sun.svg"
+        );
+        $("#circle").css("background-color", "#f1f1f1");
         $(".switch").removeClass("switched");
       } else {
         $("body").addClass("dark");
+        localStorage.setItem("mode", "dark");
+        $(".mode-icon").attr(
+          "src",
+          "https://www.svgrepo.com/show/3158/moon.svg"
+        );
+        $("#circle").css("background-color", "#111");
         $(".switch").addClass("switched");
       }
+      // window.location.reload();
     });
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -55,7 +72,6 @@ const Navbar = (props) => {
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   }, []);
-
   useEffect(() => {
     // Cross to vo 3 horizontal lines wala
     $(".nav-btn").click(() => {
@@ -67,6 +83,21 @@ const Navbar = (props) => {
       }
     });
   }, []);
+
+  // Getting the current mode from local storage
+  const mode = localStorage.getItem("mode");
+  if (mode === "dark") {
+    $("body").addClass("dark");
+    $(".mode-icon").attr("src", "https://www.svgrepo.com/show/3158/moon.svg");
+    $("#circle").css("background-color", "#111");
+    $(".switch").addClass("switched");
+  } else {
+    $("body").removeClass("dark");
+    $(".mode-icon").attr("src", "https://www.svgrepo.com/show/83726/sun.svg");
+    $("#circle").css("background-color", "#f1f1f1");
+    $(".switch").removeClass("switched");
+  }
+  //
 
   const credentials = authData.userProfile;
 
@@ -84,7 +115,13 @@ const Navbar = (props) => {
                   <span className="navbar-brand logo  nav-link">DoItNow</span>
                 </Link>
                 <div id="switch" className="switch float-right">
-                  <div id="circle"></div>
+                  <div id="circle">
+                    <img
+                      className="mode-icon"
+                      style={{ width: "20px" }}
+                      alt=""
+                    />
+                  </div>
                 </div>
 
                 {authState ? (
@@ -106,24 +143,24 @@ const Navbar = (props) => {
                   className="nav-btn"
                   as={Button}
                   variant="link"
-                  eventKey="5">
-
+                  eventKey="5"
+                >
                   <a
                     className="navbar-toggler"
                     type="button"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
                     aria-expanded="false"
-                    aria-label="Toggle navigation">
-
+                    aria-label="Toggle navigation"
+                  >
                     <span className="navbar-toggler-icon"></span>
                   </a>
                 </Accordion.Toggle>
                 <Accordion.Collapse
                   className=" "
                   id="navbarSupportedContent"
-                  eventKey="5">
-                  
+                  eventKey="5"
+                >
                   <div>{links}</div>
                 </Accordion.Collapse>
               </nav>

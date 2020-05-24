@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import $ from "jquery";
 
 // Auth
 import SignUp from "./components/auth/SignUp";
@@ -40,58 +41,62 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-      <AuthContextProvider>
-        <SpecialityContextProvider>
-          <TopicsContextProvider>
-            <ArticlesContextProvider>
-              <HomeContextProvider>
-                <Navbar />
-                <AnimatePresence>
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                    <Route exact path="/learn" component={Learn} />
-                    <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/signup/:referCode" component={SignUp} />
-                    <Route path="/login" component={SignIn} />
-                    <Route
-                      exact
-                      path="/:specialityId/:topicId/:Id"
-                      component={selectedArticle}
-                    />
-                    <Route
-                      exact
-                      path="/learn/:specialityName"
-                      component={PreviewPage}
-                    />
-                    <Route exact path="/adminpanel" component={AdminPanel} />
-                    <Route
-                      exact
-                      path="/edit/homepage"
-                      component={EditHomepage}
-                    />
-                    <Route
-                      exact
-                      path="/updatespeciality/:specailaityId"
-                      component={EditCard}
-                    />
-                    <Route exact path="/addcard" component={AddCard} />
-                    <Route
-                      exact
-                      path="/article/add/:SpecialityId/:id"
-                      component={AddArticle}
-                    />
-                    <Route
-                      exact
-                      path="/article/update/:SpecialityId/:TopicId/:ArticleId"
-                      component={UpdateArticle}
-                    />
-                  </Switch>
-                </AnimatePresence>
-              </HomeContextProvider>
-            </ArticlesContextProvider>
-          </TopicsContextProvider>
-        </SpecialityContextProvider>
+        <AuthContextProvider>
+          <SpecialityContextProvider>
+            <TopicsContextProvider>
+              <ArticlesContextProvider>
+                <HomeContextProvider>
+                  <Navbar />
+                  <AnimatePresence>
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route path="/about" component={About} />
+                      <Route exact path="/learn" component={Learn} />
+                      <Route exact path="/signup" component={SignUp} />
+                      <Route
+                        exact
+                        path="/signup/:referCode"
+                        component={SignUp}
+                      />
+                      <Route path="/login" component={SignIn} />
+                      <Route
+                        exact
+                        path="/:specialityId/:topicId/:Id"
+                        component={selectedArticle}
+                      />
+                      <Route
+                        exact
+                        path="/learn/:specialityName"
+                        component={PreviewPage}
+                      />
+                      <Route exact path="/adminpanel" component={AdminPanel} />
+                      <Route
+                        exact
+                        path="/edit/homepage"
+                        component={EditHomepage}
+                      />
+                      <Route
+                        exact
+                        path="/updatespeciality/:specailaityId"
+                        component={EditCard}
+                      />
+                      <Route exact path="/addcard" component={AddCard} />
+                      <Route
+                        exact
+                        path="/article/add/:SpecialityId/:id"
+                        component={AddArticle}
+                      />
+                      <Route
+                        exact
+                        path="/article/update/:SpecialityId/:TopicId/:ArticleId"
+                        component={UpdateArticle}
+                      />
+                    </Switch>
+                  </AnimatePresence>
+                </HomeContextProvider>
+              </ArticlesContextProvider>
+            </TopicsContextProvider>
+          </SpecialityContextProvider>
         </AuthContextProvider>
       </div>
     </BrowserRouter>

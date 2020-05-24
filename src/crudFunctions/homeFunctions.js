@@ -38,3 +38,10 @@ export const UpdateHome = (state, dispatch) => {
       });
     });
 };
+
+export const updateMode = (mode, dispatch) => {
+  dispatch({
+    type: "UPDATE_MODE",
+    mode: mode,
+  });
+};

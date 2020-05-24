@@ -23,3 +23,18 @@
     background: transparent !important;
     right: 10px;
 }
+
+.popover-body1 {
+    background: #fff !important;
+}
+
+
+/* dark mode */
+
+body.dark .popover-body1 {
+    background: #111 !important;
+}
+
+body.dark hr {
+    background-color: #f1f1f1;
+}

@@ -15,6 +15,13 @@ export const homeReducer = (state, action) => {
         completed: true,
       };
 
+    case "UPDATE_MODE":
+      console.log(action);
+      return {
+        ...state,
+        mode: action.mode,
+      };
+
     default:
       return state;
   }
