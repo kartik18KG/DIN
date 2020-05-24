@@ -1,0 +1,19 @@
+body.dark .bg-light {
+    background-color: #1A1423 !important;
+}
+
+body.dark .nav-link {
+    color: #FFFCF9 !important;
+}
+
+body.dark .logo {
+    color: #f1f1f1 !important;
+}
+
+body.dark .nav-item.active .nav-link {
+    color: #999 !important;
+}
+
+body.dark .points-box {
+    background-color: #FF6978;
+}

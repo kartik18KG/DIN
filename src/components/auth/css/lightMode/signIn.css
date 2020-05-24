@@ -1,0 +1,149 @@
+.login-form-container {
+    box-sizing: border-box;
+    overflow-y: hidden;
+    padding: 0;
+}
+
+.login-form-container {
+    margin: 0;
+    min-height: 90vh;
+    width: 100vw;
+    overflow-y: hidden;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    background: transparent;
+}
+
+.login-div {
+    width: 430px;
+    min-height: 600px;
+    padding: 30px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+}
+
+.login-form-container .logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: /* logo shadow */
+    0px 0px 2px #5f5f5f, /* offset */
+    0px 0px 0px 5px #ecf0f3, /*bottom right */
+    8px 8px 15px #a7aaaf, /* top left */
+    -8px -8px 15px #ffffff;
+}
+
+.login-form-container .title {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 24px;
+    letter-spacing: 0.5px;
+}
+
+.login-form-container .sub-title {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 7px;
+    letter-spacing: 3px;
+}
+
+.login-form-container .fields {
+    width: 100%;
+    padding: 35px 5px 5px 5px;
+}
+
+.login-form-container .fields input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    color: #555;
+    padding: 20px 10px 20px 5px;
+}
+
+.login-form-container .username,
+.login-form-container .password {
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+}
+
+.login-form-container .fields svg {
+    height: 22px;
+    margin: 0 10px -3px 25px;
+}
+
+.center {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.pia {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.login-form-container .signin-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Lato", sans-serif;
+    color: #fff;
+    text-align: center;
+    background: #24cfaa;
+    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+    transition: 0.5s;
+}
+
+.login-form-container .signin-button:hover {
+    background: #2fdbb6;
+}
+
+.login-form-container .signin-button:active {
+    background: #1da88a;
+}
+
+.login-form-container .not-link {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.login-form-container .not-link a {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 15px;
+}
+
+.signin-with-google {
+    background: #ecf0f3 !important;
+    color: #555 !important;
+    margin-top: 20px;
+}
+
+.signin-with-google .google-logo {
+    width: 35px;
+    padding-left: 10px;
+}
+
+.login-form-container .username,
+.login-form-container .password {
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 4px 4px 4px #da4167, inset -4px -4px 4px #da4167;
+}
+
+
+/* .spinner {
+    display: none;
+} */

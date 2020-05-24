@@ -1,0 +1,34 @@
+.full-view-article {
+    background-color: #fff;
+    border-top: 1px solid #00a82d;
+}
+
+.selected-article {
+    min-height: 80vh;
+}
+
+.share-icons {
+    position: fixed;
+    z-index: 1000;
+    left: 30px;
+    top: 50vh;
+    transform: scale(1.2);
+}
+
+
+/* go to top icon */
+
+.top-icon {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    z-index: 1000;
+    font-size: 2rem;
+    color: #241e4e;
+    transition: all 0.2s linear;
+}
+
+.top-icon:hover {
+    transform: scale(1.3);
+    animation-duration: 0.2s;
+}

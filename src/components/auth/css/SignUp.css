@@ -1,0 +1,7 @@
+.image-container {
+    display: flex;
+}
+
+.image-container-item {
+    padding: 10px;
+}

@@ -1,0 +1,41 @@
+/* Container */
+
+.about-us-container {
+    padding: 20px;
+    min-height: 100vh;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+
+/* ---------------------- */
+
+
+/* heading */
+
+.about-us-heading h2 {
+    color: #fff;
+    padding-top: 30px;
+    font-size: 6rem;
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+}
+
+
+/* --------------------------------------- */
+
+
+/* about us text */
+
+.about-us-text {
+    font-size: 2rem;
+    line-height: 1;
+    font-family: Coming Soon;
+    color: royalblue;
+    font-weight: 600;
+}
+
+
+/* ---------------------------------------------------------------- */
+
+
+/* ---------------------------------- */
